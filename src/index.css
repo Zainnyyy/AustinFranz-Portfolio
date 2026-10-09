@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-oswald: "Oswald", Impact, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+}
+@utility border-3 { border-width: 3px; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { padding-top: env(safe-area-inset-top, 0); }
+
+.grid-blueprint-bg{background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:32px 32px}
+.halftone-dots{background-image:radial-gradient(#000 1.2px,transparent 1.5px);background-size:8px 8px}
+.corner-ticks{position:absolute;inset:6px;pointer-events:none;background:
+linear-gradient(#000,#000) top left/12px 2px no-repeat,linear-gradient(#000,#000) top left/2px 12px no-repeat,
+linear-gradient(#000,#000) top right/12px 2px no-repeat,linear-gradient(#000,#000) top right/2px 12px no-repeat,
+linear-gradient(#000,#000) bottom left/12px 2px no-repeat,linear-gradient(#000,#000) bottom left/2px 12px no-repeat,
+linear-gradient(#000,#000) bottom right/12px 2px no-repeat,linear-gradient(#000,#000) bottom right/2px 12px no-repeat}
+.tech-barcode{background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 5px,transparent 5px 8px)}
+footer .tech-barcode{background:repeating-linear-gradient(90deg,#fff3 0 2px,transparent 2px 4px,#fff3 4px 5px,transparent 5px 8px)}
+.reveal{opacity:0;transform:translateY(18px);transition:.6s}.reveal.in{opacity:1;transform:none}
+@keyframes ml{to{transform:translateX(-50%)}}@keyframes mr{from{transform:translateX(-50%)}to{transform:none}}
+@keyframes sp{50%{transform:scale(1.4) rotate(20deg)}}@keyframes bl{50%{opacity:0}}
+.mq{display:flex;width:max-content;gap:1.25rem;padding:.6rem 0}.mq.l{animation:ml 40s linear infinite}.mq.r{animation:mr 40s linear infinite}
+.mrow:hover .mq{animation-play-state:paused}.mq .chip .ic{filter:grayscale(1);transition:.3s}.mq .chip:hover .ic{filter:none;transform:scale(1.1)}
+.sparkle{animation:sp 3s ease-in-out infinite}
+.caret{display:inline-block;width:8px;height:1.05em;vertical-align:-2px;background:#4ade80;animation:bl 1s steps(1) infinite}
+.glitch:hover{text-shadow:3px 0 #FF4D8D,-3px 0 #0038FF}
+.bar{height:14px;border:2px solid #0a0a0a;background:#F4F2EB}.bar i{display:block;height:100%;background:#22C55E;width:0;transition:width 1.2s}
+.ax-in{width:100%;background:#fff;border:2px solid #0a0a0a;padding:.7rem .8rem;font:inherit;font-size:14px;box-shadow:3px 3px 0 #0a0a0a;outline:0}
+.ax-in:focus{background:#FFFBE0;box-shadow:5px 5px 0 #0038FF}
+.has-error .ax-in{border-color:#e11d48}.has-error .err{display:block}.err{display:none;color:#e11d48;font-size:12px;margin-top:4px}
+.tk{display:inline-flex;align-items:center;gap:6px;border:2px solid #0a0a0a;background:#fff;padding:4px 10px;font-size:12px;font-weight:700;box-shadow:2px 2px 0 #0a0a0a}
+.proj:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 #0a0a0a}
+
+/* dark mode */
+html.dark{color-scheme:dark;background:#0d1117}html.dark body{background:#0d1117!important;color:#e6edf3}
+html.dark .bg-white,html.dark .bg-\[\#F4F2EB\],html.dark .ax-in,html.dark .tk{background:#161b22!important;color:#e6edf3}
+html.dark .bg-\[\#FAFAFA\],html.dark .bg-\[\#FAFAFA\]\/90{background-color:#0d1117!important}
+html.dark .text-gray-950,html.dark .text-gray-900,html.dark .text-gray-800{color:#e6edf3!important}
+html.dark .text-gray-700,html.dark .text-gray-600,html.dark .text-gray-500{color:#9aa7b4!important}
+html.dark .border-gray-950,html.dark .border-gray-900,html.dark .border-gray-300,html.dark .ax-in,html.dark .tk,html.dark .bar{border-color:#3d444d!important}
+html.dark [class*="shadow-["]{box-shadow:4px 4px 0 rgba(230,237,243,.3)!important}
+html.dark .bar{background:#0d1117}
+html.dark .grid-blueprint-bg{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px)}
+html.dark .bg-gray-950{background:#21262d!important}html.dark .corner-ticks{filter:invert(1)}
+@media(prefers-reduced-motion:reduce){.mq{animation:none!important}.reveal{opacity:1;transform:none}}
