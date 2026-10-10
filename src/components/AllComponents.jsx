@@ -980,7 +980,7 @@ function BabelWidget() {
   return (
     <div className="absolute -top-4 left-3 sm:left-6 z-40 bg-[#FF4D8D] text-white border-2 border-gray-950 p-2 rounded-xl shadow-[4px_4px_0_0_#000] w-[170px] sm:w-[195px] h-[76px] flex flex-col justify-between rotate-2 group-hover:rotate-0 transition-transform">
       <div className="flex justify-between">
-        <span className="text-[7px] font-black bg-black px-1 rounded">A7-BABEL</span>
+        <span className="text-[7px] font-black bg-black px-1 rounded">AZ-PORTFOLIO</span>
         <span className="text-[7.5px] bg-white text-gray-950 px-1.5 rounded font-black border border-gray-950">{BABEL[i][0]}</span>
       </div>
       <div className="bg-white text-gray-950 border border-gray-950 px-2 py-1 rounded-lg overflow-hidden">
