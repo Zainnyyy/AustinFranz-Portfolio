@@ -32,7 +32,7 @@ export const TYPED = [
 export const ROW1 = [['HTML','#e34f26','MARKUP'],['CSS','#1572b6','STYLE'],['JavaScript','#d4b106','LANGUAGE'],['React','#087ea4','FRAMEWORK'],['Python','#3776ab','LANGUAGE']]
 export const ROW2 = [...ROW1].reverse()
 
-export const STATS = [[3,'','Featured Projects'],[3,'Year','BSIT Year Level']]
+export const STATS = [[5,'','Featured Projects'],[3,'Year','BSIT Year Level']]
 export const SERVICES = ['UI Design','Web Development','React Frontend']
 export const TOOLS = {
   LANGUAGES: ['HTML','CSS','JavaScript','Python'],
