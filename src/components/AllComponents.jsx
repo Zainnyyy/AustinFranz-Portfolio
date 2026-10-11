@@ -1126,8 +1126,23 @@ function DinoGame() {
 const COL = ['#D1D5DB', '#86EFAC', '#4ADE80', '#22C55E', '#15803D', '#FF4D8D']
 const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
-function SnakeMatrix() {
+function GitHubContributions() {
   const grid = useRef(null), wrap = useRef(null), count = useRef(null)
+  const [totalCount, setTotalCount] = useState(0)
+
+  useEffect(() => {
+    const fetchContributions = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/Zainnyyy/repos?sort=updated&per_page=100')
+        const repos = await response.json()
+        const total = repos.reduce((sum, repo) => sum + (repo.pushed_at ? 1 : 0), 0)
+        setTotalCount(total)
+      } catch (error) {
+        console.error('Failed to fetch contributions:', error)
+      }
+    }
+    fetchContributions()
+  }, [])
 
   useEffect(() => {
     const g = grid.current, w = wrap.current, ct = count.current
@@ -1183,7 +1198,7 @@ function SnakeMatrix() {
       <div className="bg-white border-2 border-gray-900 p-2.5 sm:p-4 shadow-[6px_6px_0_0_#000]">
         <div className="flex justify-between items-center border-b-2 border-gray-900 pb-2 mb-3 text-[10px] font-black uppercase">
           <span className="flex items-center gap-1.5"><i className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />GITHUB.MATRIX // SNAKE</span>
-          <span className="bg-gray-950 text-white px-2 py-0.5 text-[8.5px]">EATING_DOTS</span>
+          <span className="bg-gray-950 text-white px-2 py-0.5 text-[8.5px]">ZAINNYYY</span>
         </div>
         <div ref={wrap} className="w-full border-2 border-gray-900 p-2 sm:p-3 bg-[#F4F2EB] overflow-hidden flex justify-center">
           <div ref={grid} className="inline-grid" />
@@ -1389,7 +1404,7 @@ function About() {
         </div>
       </div>
 
-      <SnakeMatrix />
+      <GitHubContributions />
     </SectionFrame>
   )
 }
