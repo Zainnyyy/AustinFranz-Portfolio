@@ -1410,11 +1410,15 @@ function About() {
 }
 
 function Chips({ items, dark }) {
-  return items.map(([name, color, tag]) => (
+  return items.map(([name, color, tag, logo]) => (
     <div key={name} className={`chip flex items-center gap-3 border-2 border-gray-950 px-5 py-3 rounded-2xl shadow-[4px_4px_0_0_#000] hover:-translate-y-1 transition-all cursor-pointer ${dark ? 'bg-gray-950 hover:border-[#FF5500] text-white' : 'bg-white hover:border-[#0038FF]'}`}>
-      <span className="ic w-8 h-8 rounded-lg grid place-items-center font-black text-xs text-white border border-gray-950" style={{ background: color, color: color === '#fbf0df' ? '#000' : undefined }}>
-        {name.replace(/[^A-Za-z+]/g, '').slice(0, 2)}
-      </span>
+      {logo ? (
+        <img src={logo} alt={name} className="w-8 h-8 rounded-lg object-contain" />
+      ) : (
+        <span className="ic w-8 h-8 rounded-lg grid place-items-center font-black text-xs text-white border border-gray-950" style={{ background: color, color: color === '#fbf0df' ? '#000' : undefined }}>
+          {name.replace(/[^A-Za-z+]/g, '').slice(0, 2)}
+        </span>
+      )}
       <span className="font-oswald text-2xl font-bold uppercase tracking-tight">{name}</span>
       <span className={`text-[9px] font-extrabold border-l-2 border-gray-700 pl-3 ml-1 ${dark ? 'text-[#0038FF]' : 'text-[#FF5500]'}`}>{tag}</span>
     </div>

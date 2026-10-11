@@ -29,7 +29,7 @@ export const TYPED = [
   [OK,'✓ '],['text-green-400 font-extrabold','Success! '],['text-slate-100 font-extrabold','Open to projects & collaboration.'],
 ]
 
-export const ROW1 = [['HTML','#e34f26','MARKUP'],['CSS','#1572b6','STYLE'],['JavaScript','#d4b106','LANGUAGE'],['React','#087ea4','FRAMEWORK'],['Python','#3776ab','LANGUAGE']]
+export const ROW1 = [['HTML','#e34f26','MARKUP','/img/HTML.png'],['CSS','#1572b6','STYLE','/img/CSS3.png'],['JavaScript','#d4b106','LANGUAGE','/img/JavaScript.png'],['React','#087ea4','FRAMEWORK','/img/React.png'],['Python','#3776ab','LANGUAGE','/img/Python.png']]
 export const ROW2 = [...ROW1].reverse()
 
 export const STATS = [[5,'','Featured Projects'],[3,'Year','BSIT Year Level']]
