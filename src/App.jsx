@@ -3,93 +3,29 @@ import useTheme from './hooks/useTheme'
 import { Navbar, Hero, About, TechStack, SkillMatrix, Projects, Contact, Footer } from './components/AllComponents'
 
 function CustomCursor() {
+  const cursorRef = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [particles, setParticles] = useState([])
-  const particleIdRef = useRef(0)
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY })
-
-      // Create particles randomly
-      if (Math.random() > 0.7) {
-        const newParticle = {
-          id: particleIdRef.current++,
-          x: e.clientX,
-          y: e.clientY,
-          vx: (Math.random() - 0.5) * 4,
-          vy: (Math.random() - 0.5) * 4,
-        }
-        setParticles((prev) => [...prev, newParticle])
-      }
     }
 
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setParticles((prev) =>
-        prev
-          .map((p) => ({
-            ...p,
-            x: p.x + p.vx,
-            y: p.y + p.vy,
-            vy: p.vy + 0.15,
-            opacity: 1 - (Date.now() % 500) / 500,
-          }))
-          .filter((p) => (Date.now() - 0 < 500))
-      )
-    }, 16)
-
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <>
-      {/* Glow cursor */}
-      <div
-        className="fixed w-6 h-6 pointer-events-none z-50 mix-blend-screen"
-        style={{
-          left: position.x - 12,
-          top: position.y - 12,
-          opacity: 0.8,
-        }}
-      >
-        <div className="absolute inset-0 border-2 border-[#0038FF] rounded-full animate-pulse"></div>
-        <div className="absolute inset-1 border border-[#FF4D8D] rounded-full"></div>
-        <div className="absolute w-1 h-1 bg-[#22C55E] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-[#22C55E]"></div>
-      </div>
-
-      {/* Outer glow */}
-      <div
-        className="fixed w-12 h-12 pointer-events-none z-40"
-        style={{
-          left: position.x - 24,
-          top: position.y - 24,
-          background: 'radial-gradient(circle, rgba(0,56,255,0.1) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(8px)',
-        }}
-      ></div>
-
-      {/* Particles */}
-      {particles.map((p) => (
-        <div
-          key={p.id}
-          className="fixed w-1 h-1 pointer-events-none z-30"
-          style={{
-            left: p.x,
-            top: p.y,
-            background: ['#0038FF', '#FF4D8D', '#22C55E'][Math.floor(Math.random() * 3)],
-            borderRadius: '50%',
-            opacity: p.opacity || 0,
-            boxShadow: `0 0 4px currentColor`,
-          }}
-        ></div>
-      ))}
-    </>
+    <div
+      ref={cursorRef}
+      className="pointer-events-none fixed w-4 h-4 bg-[#FF4D8D] rounded-full shadow-lg z-[10000]"
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transform: 'translate(-50%, -50%)',
+        boxShadow: '0 0 20px rgba(255, 77, 141, 0.8), 0 0 40px rgba(255, 77, 141, 0.4)',
+      }}
+    />
   )
 }
 
