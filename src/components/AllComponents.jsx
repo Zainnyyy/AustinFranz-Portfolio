@@ -1293,20 +1293,57 @@ function Hero() {
         <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* left */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="group relative w-full h-[320px] sm:h-[420px] bg-gray-950 rounded-2xl p-2.5 border-3 border-gray-950 shadow-[8px_8px_0_0_#000] mt-8">
+            <div className="group relative w-full h-[320px] sm:h-[420px] bg-gray-950 rounded-2xl p-2.5 border-3 border-gray-950 shadow-[8px_8px_0_0_#000] mt-8 overflow-hidden">
               <span className="absolute -top-9 left-10 text-2xl z-50 hover:scale-125 transition-transform cursor-pointer" title="woof">🐕</span>
+              
+              {/* Profile Image */}
               <div
-                className="relative w-full h-full rounded-xl overflow-hidden grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                className="relative w-full h-full rounded-xl overflow-hidden grayscale contrast-125 group-hover:opacity-0 transition-all duration-700"
                 style={{ background: "url(/img/hero.webp) 50% 6%/cover, radial-gradient(circle at 55% 40%,#fff 0,#bbb 40%,#222 100%)" }}
               >
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/20" />
               </div>
-              <a href="#contact" title="say hi → contact" className="absolute top-4 right-4 z-30 bg-white p-1 rounded border border-gray-950 shadow-[2px_2px_0_0_#000] flex flex-col items-center hover:scale-110 transition-transform">
+
+              {/* Terminal View */}
+              <div className="absolute inset-0 rounded-xl bg-gray-950 opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col p-4 overflow-hidden">
+                {/* Terminal Header */}
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-700">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+                  <span className="text-green-400 text-xs ml-2 font-mono">austin@az: $ ./deploy</span>
+                </div>
+
+                {/* Terminal Content */}
+                <div className="flex flex-col space-y-3 flex-1 justify-center">
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-mono">
+                    <span>✓</span>
+                    <span>Loading profile: austin.id</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-mono">
+                    <span>✓</span>
+                    <span>Role: Developer / UI Designer</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-mono">
+                    <span>✓</span>
+                    <span>Location: Iloilo, Philippines</span>
+                  </div>
+
+                  {/* Yellow Square */}
+                  <div className="flex justify-center pt-4">
+                    <div className="w-16 h-16 bg-yellow-400 rounded-lg shadow-lg" />
+                  </div>
+                </div>
+              </div>
+
+              <a href="#contact" title="say hi → contact" className="absolute top-4 right-4 z-30 bg-white p-1 rounded border border-gray-950 shadow-[2px_2px_0_0_#000] flex flex-col items-center hover:scale-110 transition-transform group-hover:opacity-0">
                 <span className="w-9 h-9 block" style={{ background: 'conic-gradient(#000 25%,#fff 0 50%,#000 0 75%,#fff 0) 0 0/6px 6px' }} />
                 <span className="text-[6.5px] font-black text-gray-950">A7-QR</span>
               </a>
               <BabelWidget />
-              <div className="absolute -bottom-5 right-2 sm:right-6 bg-[#FACC15] text-gray-950 border-2 border-gray-950 p-2.5 rounded-xl shadow-[4px_4px_0_0_#000] max-w-[190px] rotate-2 group-hover:rotate-0 transition-transform z-30">
+              <div className="absolute -bottom-5 right-2 sm:right-6 bg-[#FACC15] text-gray-950 border-2 border-gray-950 p-2.5 rounded-xl shadow-[4px_4px_0_0_#000] max-w-[190px] rotate-2 group-hover:rotate-0 transition-transform z-30 group-hover:opacity-0">
                 <div className="flex items-center justify-between mb-1">
                   <span className="flex items-center gap-1.5 text-[8px] font-black"><i className="w-2 h-2 bg-[#FF5500] border border-gray-950 rounded-full animate-ping" />AZ / NOTE</span>
                   <span className="text-[7px] bg-black text-white px-1 rounded">0x7F</span>
