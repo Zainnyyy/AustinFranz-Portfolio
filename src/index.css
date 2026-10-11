@@ -6,8 +6,8 @@
 }
 @utility border-3 { border-width: 3px; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 72px; cursor: none; }
-body { padding-top: env(safe-area-inset-top, 0); cursor: none; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { padding-top: env(safe-area-inset-top, 0); }
 
 .grid-blueprint-bg{background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:32px 32px}
 .halftone-dots{background-image:radial-gradient(#000 1.2px,transparent 1.5px);background-size:8px 8px}
