@@ -27,7 +27,7 @@ footer .tech-barcode{background:repeating-linear-gradient(90deg,#fff3 0 2px,tran
 .caret{display:inline-block;width:8px;height:1.05em;vertical-align:-2px;background:#4ade80;animation:bl 1s steps(1) infinite}
 .glitch:hover{text-shadow:3px 0 #FF4D8D,-3px 0 #0038FF}
 .bar{height:14px;border:2px solid #0a0a0a;background:#F4F2EB}.bar i{display:block;height:100%;background:#22C55E;width:0;transition:width 1.2s}
-.ax-in{width:100%;background:#fff;border:2px solid #0a0a0a;padding:.7rem .8rem;font:inherit;font-size:14px;box-shadow:3px 3px 0 #0a0a0a;outline:0}
+.ax-in{width:100%;background:#fff;border:2px solid #0a0a0a;padding:.7rem .8rem;font:inherit;font-size:14px;box-shadow:3px 3px 0 #0a0a0a;outline:0;resize:none}
 .ax-in:focus{background:#FFFBE0;box-shadow:5px 5px 0 #0038FF}
 .has-error .ax-in{border-color:#e11d48}.has-error .err{display:block}.err{display:none;color:#e11d48;font-size:12px;margin-top:4px}
 .tk{display:inline-flex;align-items:center;gap:6px;border:2px solid #0a0a0a;background:#fff;padding:4px 10px;font-size:12px;font-weight:700;box-shadow:2px 2px 0 #0a0a0a}
