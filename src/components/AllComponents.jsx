@@ -1507,49 +1507,101 @@ function SkillMatrix() {
 }
 
 function Projects() {
-  return (
-    <SectionFrame id="works" no="005" label="PROJECTS" tag="SELECTED WORKS" tagClass="bg-[#0038FF] text-white" foot="PROJECTS">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-gray-950 pb-6">
-        <div>
-          <h2 className="glitch font-oswald text-5xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tighter leading-none">PROJECT<span className="text-[#0038FF]">.</span></h2>
-          <p className="mt-3 text-xs sm:text-sm text-gray-800 leading-relaxed">Selected UI and web projects I have designed and built while studying.</p>
-        </div>
-        <span className="text-[10px] font-black uppercase bg-[#FACC15] text-gray-950 border border-gray-950 px-3 py-1.5 shadow-[2px_2px_0_0_#000] rotate-1 w-fit">05 ENTRIES</span>
-      </div>
+  const [selectedProject, setSelectedProject] = useState(null)
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
-        {PROJECTS.map(p => {
-          const live = !!p.url
-          const Thumb = live ? 'a' : 'div'
-          const link = live ? { href: p.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `Open ${p.host}` } : {}
-          return (
-            <article key={p.no} className="proj bg-white border-2 border-gray-950 shadow-[8px_8px_0_0_#000] transition-all flex flex-col">
-              <Thumb {...link} className="relative block h-44 border-b-2 border-gray-950 overflow-hidden" style={{ background: p.bg }}>
-                {p.img
-                  ? <img src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-                  : <span className="absolute inset-0 grid place-items-center font-oswald text-4xl font-bold text-white/90 mix-blend-difference">{live ? p.name : 'SOON'}</span>}
-                <span className="absolute top-3 left-3 text-[9px] font-black px-2 py-0.5 border-2 border-gray-950 shadow-[2px_2px_0_0_#000] bg-[#22C55E] text-gray-950" style={live ? undefined : { background: '#FACC15' }}>{live ? 'LIVE' : 'SHOWCASE'}</span>
-                <span className="absolute top-3 right-3 bg-gray-950 text-white text-xs font-black px-2 py-0.5">{p.no}</span>
-              </Thumb>
-              <div className="p-5 flex-1 flex flex-col justify-between gap-4">
-                <div>
-                  <p className="text-[10px] font-black uppercase text-[#FF4D8D]">{p.kind}</p>
-                  <h3 className="font-oswald text-3xl font-bold uppercase">{p.name}</h3>
-                  <p className="text-xs leading-relaxed mt-2">{p.desc}</p>
-                  <div className="flex flex-wrap gap-2 mt-3">{p.tags.map(t => <span key={t} className="tk text-[10px]! py-0.5!">{t}</span>)}</div>
+  return (
+    <>
+      <SectionFrame id="works" no="005" label="PROJECTS" tag="SELECTED WORKS" tagClass="bg-[#0038FF] text-white" foot="PROJECTS">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-gray-950 pb-6">
+          <div>
+            <h2 className="glitch font-oswald text-5xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tighter leading-none">PROJECT<span className="text-[#0038FF]">.</span></h2>
+            <p className="mt-3 text-xs sm:text-sm text-gray-800 leading-relaxed">Selected UI and web projects I have designed and built while studying.</p>
+          </div>
+          <span className="text-[10px] font-black uppercase bg-[#FACC15] text-gray-950 border border-gray-950 px-3 py-1.5 shadow-[2px_2px_0_0_#000] rotate-1 w-fit">05 ENTRIES</span>
+        </div>
+
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+          {PROJECTS.map(p => {
+            const live = !!p.url
+            return (
+              <article key={p.no} className="proj bg-white border-2 border-gray-950 shadow-[8px_8px_0_0_#000] transition-all flex flex-col cursor-pointer hover:shadow-[12px_12px_0_0_#000] hover:-translate-y-1" onClick={() => setSelectedProject(p)}>
+                <div className="relative block h-44 border-b-2 border-gray-950 overflow-hidden" style={{ background: p.bg }}>
+                  {p.img
+                    ? <img src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    : <span className="absolute inset-0 grid place-items-center font-oswald text-4xl font-bold text-white/90 mix-blend-difference">{live ? p.name : 'SOON'}</span>}
+                  <span className="absolute top-3 left-3 text-[9px] font-black px-2 py-0.5 border-2 border-gray-950 shadow-[2px_2px_0_0_#000] bg-[#22C55E] text-gray-950" style={live ? undefined : { background: '#FACC15' }}>{live ? 'LIVE' : 'SHOWCASE'}</span>
+                  <span className="absolute top-3 right-3 bg-gray-950 text-white text-xs font-black px-2 py-0.5">{p.no}</span>
                 </div>
-                <div className="flex justify-between items-center border-t-2 border-gray-950 pt-3 text-xs font-bold">
-                  <span className="truncate">{p.host}</span>
-                  {live
-                    ? <a href={p.url} target="_blank" rel="noopener noreferrer" className="bg-[#FACC15] text-gray-950 border-2 border-gray-950 px-3 py-1 shadow-[2px_2px_0_0_#000] hover:bg-gray-950 hover:text-white transition-colors">Visit ↗</a>
-                    : <span className="border-2 border-gray-300 px-3 py-1 text-gray-500">Coming soon</span>}
+                <div className="p-5 flex-1 flex flex-col justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-black uppercase text-[#FF4D8D]">{p.kind}</p>
+                    <h3 className="font-oswald text-3xl font-bold uppercase">{p.name}</h3>
+                    <p className="text-xs leading-relaxed mt-2">{p.desc}</p>
+                    <div className="flex flex-wrap gap-2 mt-3">{p.tags.map(t => <span key={t} className="tk text-[10px]! py-0.5!">{t}</span>)}</div>
+                  </div>
+                  <div className="flex justify-between items-center border-t-2 border-gray-950 pt-3 text-xs font-bold">
+                    <span className="truncate">{p.host}</span>
+                    {live
+                      ? <a href={p.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="bg-[#FACC15] text-gray-950 border-2 border-gray-950 px-3 py-1 shadow-[2px_2px_0_0_#000] hover:bg-gray-950 hover:text-white transition-colors">Visit ↗</a>
+                      : <span className="border-2 border-gray-300 px-3 py-1 text-gray-500">Coming soon</span>}
+                  </div>
                 </div>
+              </article>
+            )
+          })}
+        </div>
+      </SectionFrame>
+
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in" onClick={() => setSelectedProject(null)}>
+          <div className="bg-white border-4 border-gray-950 shadow-[16px_16px_0_0_#000] max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-in zoom-in" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b-4 border-gray-950 p-4 flex justify-between items-center z-10">
+              <span className="font-black text-sm uppercase">{selectedProject.kind}</span>
+              <button onClick={() => setSelectedProject(null)} className="text-2xl font-bold hover:bg-gray-950 hover:text-white w-8 h-8 flex items-center justify-center transition-colors">×</button>
+            </div>
+
+            <div className="p-6 space-y-6">
+              {selectedProject.img && (
+                <div className="border-2 border-gray-950 overflow-hidden">
+                  <img src={selectedProject.img} alt={selectedProject.name} className="w-full h-auto" />
+                </div>
+              )}
+
+              <div>
+                <h2 className="font-oswald text-5xl font-bold uppercase mb-3">{selectedProject.name}</h2>
+                <p className="text-gray-700 leading-relaxed text-sm mb-4">{selectedProject.desc}</p>
+
+                <div className="border-t-2 border-b-2 border-gray-950 py-4 my-4">
+                  <p className="text-[10px] font-black uppercase text-gray-600 mb-2">TECHNOLOGIES</p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map(t => (
+                      <span key={t} className="tk text-[10px]! py-0.5!">{t}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="border-2 border-gray-950 p-3">
+                    <p className="text-[10px] font-black uppercase text-gray-600">Platform</p>
+                    <p className="font-bold">{selectedProject.host}</p>
+                  </div>
+                  <div className="border-2 border-gray-950 p-3">
+                    <p className="text-[10px] font-black uppercase text-gray-600">Project ID</p>
+                    <p className="font-bold">#{selectedProject.no}</p>
+                  </div>
+                </div>
+
+                {selectedProject.url && (
+                  <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="block w-full bg-[#0038FF] text-white border-2 border-gray-950 px-6 py-3 shadow-[4px_4px_0_0_#000] hover:bg-gray-950 transition-colors font-bold text-center uppercase">
+                    Open Project ↗
+                  </a>
+                )}
               </div>
-            </article>
-          )
-        })}
-      </div>
-    </SectionFrame>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
