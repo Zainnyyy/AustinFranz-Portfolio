@@ -4,29 +4,20 @@ import { Navbar, Hero, About, TechStack, SkillMatrix, Projects, Contact, Footer 
 
 function CustomCursor() {
   const cursorRef = useRef(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY })
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`
+        cursorRef.current.style.top = `${e.clientY}px`
+      }
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mousemove', handleMouseMove)
+    return () => document.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  return (
-    <div
-      ref={cursorRef}
-      className="pointer-events-none fixed w-4 h-4 bg-[#FF4D8D] rounded-full shadow-lg z-[10000]"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: 'translate(-50%, -50%)',
-        boxShadow: '0 0 20px rgba(255, 77, 141, 0.8), 0 0 40px rgba(255, 77, 141, 0.4)',
-      }}
-    />
-  )
+  return <div ref={cursorRef} className="custom-cursor"></div>
 }
 
 function LoadingScreen({ isVisible }) {
